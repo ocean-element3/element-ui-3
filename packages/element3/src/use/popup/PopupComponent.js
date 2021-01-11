@@ -1,4 +1,4 @@
-import { Teleport, ref, h } from 'vue'
+import { Teleport, ref, h, Transition } from 'vue'
 import { props } from './props'
 import { useZindex, useBodyScroll } from './use'
 
@@ -31,17 +31,24 @@ export default {
       close
     }
   },
-  render({ $attrs, $slots, zIndex, close, show }) {
-    if (show) {
-      return (
-        <Teleport to="body">
-          <popupWrapper style={{ zIndex }} class={$attrs.class} onClick={close}>
+  render({ $props, $attrs, $slots, zIndex, close, show }) {
+    return (
+      <Teleport to="body">
+        <Transition
+          name={$props.transitionClass}
+          onAfterLeave={$props.afterLeaveHandler}
+          appear
+        >
+          <popupWrapper
+            style={{ zIndex }}
+            class={$attrs.class}
+            onClick={close}
+            v-show={$props.visiable}
+          >
             {$slots.default ? $slots.default() : null}
           </popupWrapper>
-        </Teleport>
-      )
-    }
-
-    return null
+        </Transition>
+      </Teleport>
+    )
   }
 }

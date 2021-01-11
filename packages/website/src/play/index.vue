@@ -1,40 +1,34 @@
 <template>
-  <div>
-    <Dialog v-model="show" :closeOnClickModal="true">
-      <span @click="clickHandle">fdsfsdafsdafsdaf</span>
-      <template v-slot:footer>
-        <div class="dialog-footer" style="color: red">点击框空白关闭</div>
-      </template>
-      <button @click="show = false">点击我关闭</button>
-    </Dialog>
-    <!-- <el-dialog
-      title="提示"
-      :visible="true"
-      width="30%"
-      :close-on-click-modal="true"
-      center
-    ></el-dialog> -->
-  </div>
+  <el-button :plain="true" @click="open">打开消息提示</el-button>
+  <el-button :plain="true" @click="openVn">VNode</el-button>
 </template>
+
 <script>
-import { defineComponent, ref, watch } from 'vue'
-import Dialog from './Dialog'
+import { h } from 'vue'
+import { Message } from 'element3'
 
-export default defineComponent({
-  components: { Dialog },
-
+export default {
   setup() {
-    const count = ref(0)
-    const clickHandle = () => count.value++
-    const show = ref(true)
-    watch(count, () => {
-      console.log('```````````', count.value)
-    })
+    function open() {
+      // message('这是一条消息提示')
+      Message({
+        message: 'verticalOffset'
+      })
+    }
+
+    function openVn() {
+      Message({
+        message: h('p', null, [
+          h('span', null, '内容可以是 '),
+          h('i', { style: 'color: teal' }, 'VNode')
+        ])
+      })
+    }
+
     return {
-      clickHandle,
-      show,
-      tabPosition: 'top'
+      open,
+      openVn
     }
   }
-})
+}
 </script>
