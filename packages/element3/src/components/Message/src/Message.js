@@ -48,7 +48,7 @@ function mergeOptions(opts, type = 'info') {
   }
 
   const userOnClose = opts?.onClose
-  // opts.onClose Cannot be merged into the default options
+  // opts.onClose Cannot be merged into the default options——
   delete opts?.onClose
   delete opts?.offset
   defaultOptions.onClose = (instance) => {
