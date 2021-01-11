@@ -33,7 +33,7 @@ export default {
   },
   render({ $props, $attrs, $slots, zIndex, close, show }) {
     return (
-      <Teleport to="body">
+      <Teleport to={$props.target}>
         <Transition
           name={$props.transitionClass}
           onAfterLeave={$props.afterLeaveHandler}
