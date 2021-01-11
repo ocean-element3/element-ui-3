@@ -1,6 +1,6 @@
 <template>
   <transition name="el-message-fade" @after-leave="handleAfterLeave" appear>
-    <div
+    <PopupComponent
       v-show="isShow"
       :class="[
         'el-message',
@@ -30,11 +30,12 @@
         class="el-message__closeBtn el-icon-close"
         @click="handleClose"
       ></i>
-    </div>
+    </PopupComponent>
   </transition>
 </template>
 
 <script>
+import { PopupComponent } from '../../../use/popup/index'
 import { getCurrentInstance, computed, ref } from 'vue'
 export default {
   props: {
@@ -55,6 +56,9 @@ export default {
     customClass: String,
     dangerouslyUseHTMLString: Boolean,
     offset: Number
+  },
+  components: {
+    PopupComponent
   },
   emits: ['close'],
   setup(props, { emit }) {

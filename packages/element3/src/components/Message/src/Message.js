@@ -1,6 +1,5 @@
 import messageComponent from './Message.vue'
 import { createComponent } from '../../../use/component'
-import { PopupManager } from '../../../utils/popup'
 import { isVNode } from 'vue'
 
 const instanceList = []
@@ -23,8 +22,7 @@ Message.closeAll = () => {
 
 function createMessage(opts) {
   const instance = createMessageComponentByOpts(opts)
-  setZIndex(instance)
-  appendToBody(instance)
+
   addInstance(instance)
   return instance.proxy
 }
@@ -36,10 +34,6 @@ function createMessageComponentByOpts(opts) {
   return createComponent(messageComponent, opts)
 }
 
-function setZIndex(instance) {
-  instance.vnode.el.style.zIndex = PopupManager.nextZIndex()
-}
-
 function mergeOptions(opts, type = 'info') {
   const defaultOptions = {
     duration: 4500,
@@ -48,7 +42,7 @@ function mergeOptions(opts, type = 'info') {
   }
 
   const userOnClose = opts?.onClose
-  // opts.onClose Cannot be merged into the default options——
+  // opts.onClose Cannot be merged into the default options
   delete opts?.onClose
   delete opts?.offset
   defaultOptions.onClose = (instance) => {
@@ -109,8 +103,4 @@ function removeInstance(instance) {
 
 function getIndexByInstance(instance) {
   return instanceList.findIndex((i) => i.uid == instance.uid)
-}
-
-function appendToBody(componentInstance) {
-  document.body.append(componentInstance.vnode.el)
 }
