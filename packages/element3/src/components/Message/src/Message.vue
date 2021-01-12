@@ -87,9 +87,8 @@ export default {
       isShow.value = false
     }
 
-    function handleAfterLeave() {
-      console.log('被处罚了')
-      //  instance.vnode.el.parentElement?.removeChild(instance.vnode.el)
+    function handleAfterLeave(el) {
+      el.parentNode?.removeChild(el)
     }
 
     function handleClose() {
