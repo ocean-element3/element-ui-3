@@ -3,7 +3,7 @@ import { createComponent } from '../../../use/component'
 import { isVNode } from 'vue'
 
 const instanceList = []
-
+const target = 'body'
 export function Message(opts) {
   return createMessage(mergeOptions(opts))
 }
@@ -36,7 +36,8 @@ function createMessageComponentByOpts(opts) {
 
 function mergeOptions(opts, type = 'info') {
   const defaultOptions = {
-    duration: 4500,
+    target,
+    duration: 14500,
     type,
     offset: calculateVerticalOffset(opts.offset)
   }
@@ -60,7 +61,6 @@ function mergeOptions(opts, type = 'info') {
 
 function calculateVerticalOffset(offset = 20) {
   let result = offset
-
   instanceList.forEach((instance) => {
     result += getNextElementInterval(instance)
   })
@@ -88,9 +88,11 @@ function updatePosition(closeInstance) {
   }
 }
 
-function getNextElementInterval(instance) {
+function getNextElementInterval() {
   const INTERVAL_HEIGHT = 16
-  return instance.vnode.el.offsetHeight + INTERVAL_HEIGHT
+  const chilren = document.querySelector(target).children
+  const { height } = chilren[chilren.length - 1].getBoundingClientRect()
+  return height + INTERVAL_HEIGHT
 }
 
 function addInstance(instance) {
