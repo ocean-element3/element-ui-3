@@ -5,7 +5,7 @@
 
 <script>
 import { h } from 'vue'
-import { Message } from 'element3'
+import { Message } from '../../../element3/src/components/Message'
 
 export default {
   setup() {
