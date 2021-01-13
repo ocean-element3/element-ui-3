@@ -1,6 +1,5 @@
 <template>
   <PopupComponent
-    :target="target"
     :visiable="isShow"
     :style="positionStyle"
     :class="[
@@ -10,6 +9,7 @@
       center ? 'is-center' : '',
       customClass
     ]"
+    ref="self"
     @mouseenter="handleMouseenter"
     @mouseleave="handleMouseleave"
     :afterLeaveHandler="handleAfterLeave"
@@ -40,10 +40,6 @@ import { PopupComponent } from '../../../use/popup/index'
 import { getCurrentInstance, computed, ref } from 'vue'
 export default {
   props: {
-    target: {
-      type: [String],
-      defalut: 'body'
-    },
     message: {
       type: [String, Object]
     },

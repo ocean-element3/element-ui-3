@@ -88,11 +88,10 @@ function updatePosition(closeInstance) {
   }
 }
 
-function getNextElementInterval() {
+function getNextElementInterval(instance) {
   const INTERVAL_HEIGHT = 16
-  const chilren = document.querySelector(target).children
-  const { height } = chilren[chilren.length - 1].getBoundingClientRect()
-  return height + INTERVAL_HEIGHT
+  const target = instance.proxy.$refs.self.$refs.target
+  return target.offsetHeight + INTERVAL_HEIGHT
 }
 
 function addInstance(instance) {

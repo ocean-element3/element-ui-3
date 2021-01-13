@@ -42,6 +42,7 @@ export default {
     return (
       <Teleport to={$props.target}>
         <Transition
+          ref="target"
           name={$props.transitionClass}
           onAfterLeave={$props.afterLeaveHandler}
           appear
