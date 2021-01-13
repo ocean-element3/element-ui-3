@@ -37,7 +37,7 @@ function createMessageComponentByOpts(opts) {
 function mergeOptions(opts, type = 'info') {
   const defaultOptions = {
     target,
-    duration: 14500,
+    duration: 4500,
     type,
     offset: calculateVerticalOffset(opts.offset)
   }
