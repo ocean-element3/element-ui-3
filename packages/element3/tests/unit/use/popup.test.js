@@ -21,10 +21,10 @@ describe('open a teleport', () => {
       template: `<PopupComponent class="el-dialog__wrapper">${slotText}</PopupComponent>`
     })
 
-    expect(document.querySelector('body > .el-dialog__wrapper')).not.toBeNull()
+    expect(document.querySelector('body .el-dialog__wrapper')).not.toBeNull()
     expect(
       getComputedStyle(
-        document.querySelector('body > .el-dialog__wrapper'),
+        document.querySelector('body .el-dialog__wrapper'),
         null
       ).getPropertyValue('z-index')
     ).toBe('2000')
@@ -44,7 +44,7 @@ describe('open a teleport', () => {
 
     expect(
       getComputedStyle(
-        document.querySelectorAll('body > .el-popup__wrapper')[1],
+        document.querySelectorAll('body  .el-popup__wrapper')[1],
         null
       ).getPropertyValue('z-index')
     ).toBe('2002')
@@ -88,7 +88,7 @@ describe('open a teleport', () => {
 
     await nextTick()
 
-    expect(document.querySelector('body > .el-popup__wrapper')).not.toBeNull()
+    expect(document.querySelector('body  .el-popup__wrapper')).not.toBeNull()
     expect(clicked).toBeFalsy()
   })
 

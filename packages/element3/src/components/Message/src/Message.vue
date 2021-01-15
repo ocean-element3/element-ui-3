@@ -67,11 +67,11 @@ export default {
 
     const isShow = ref(true)
     // @public
-    const offsetVal = ref(props.offset)
+    const offsetTop = ref(props.offset)
 
     const isShowType = computed(() => props.type && !props.iconClass)
     const positionStyle = computed(() => ({
-      top: `${offsetVal.value}px`
+      top: `${offsetTop.value}px`
     }))
 
     let timer
@@ -116,7 +116,7 @@ export default {
       isShow,
       isShowType,
       positionStyle,
-      offsetVal,
+      offsetTop,
       handleClose,
       handleAfterLeave,
       handleMouseenter,
@@ -125,5 +125,3 @@ export default {
   }
 }
 </script>
-
-<style></style>

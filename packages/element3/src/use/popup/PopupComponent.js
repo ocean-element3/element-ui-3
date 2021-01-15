@@ -34,7 +34,6 @@ export default {
   render({ $props, $attrs, $slots, zIndex, close }) {
     const attrs = computed(() => {
       return {
-        zIndex,
         ...$attrs,
         ...toRefs($props)
       }
@@ -49,6 +48,7 @@ export default {
         >
           <popupWrapper
             onClick={close}
+            style={{ zIndex }}
             {...attrs.value}
             v-show={$props.visiable}
           >
