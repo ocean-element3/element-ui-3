@@ -34,8 +34,7 @@ export default {
   render({ $props, $attrs, $slots, zIndex, close }) {
     const attrs = computed(() => {
       return {
-        ...$attrs,
-        ...toRefs($props)
+        ...$attrs
       }
     })
     return (
@@ -49,7 +48,7 @@ export default {
           <popupWrapper
             onClick={close}
             style={{ zIndex }}
-            {...attrs.value}
+            {...$attrs}
             v-show={$props.visiable}
           >
             {$slots.default ? $slots.default() : null}
