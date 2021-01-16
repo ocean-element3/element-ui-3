@@ -84,8 +84,7 @@ function updatePosition(closeInstance) {
     index++
   ) {
     const instance = instanceList[index]
-    instance.proxy.offsetVal -= getNextElementInterval(closeInstance)
-    console.log(instance.proxy.offsetVal)
+    instance.proxy.offsetTop -= getNextElementInterval(closeInstance)
   }
 }
 
