@@ -85,12 +85,13 @@ function updatePosition(closeInstance) {
   ) {
     const instance = instanceList[index]
     instance.proxy.offsetVal -= getNextElementInterval(closeInstance)
+    console.log(instance.proxy.offsetVal)
   }
 }
 
 function getNextElementInterval(instance) {
   const INTERVAL_HEIGHT = 16
-  const target = instance.proxy.popupRef
+  const target = instance.proxy.getCurrentRef
   return target.offsetHeight + INTERVAL_HEIGHT
 }
 
