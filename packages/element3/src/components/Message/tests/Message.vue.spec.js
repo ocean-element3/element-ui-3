@@ -254,4 +254,14 @@ describe('Message.vue', () => {
     jest.runTimersToTime(1000)
     expect(wrapper.emitted('close')).toBeTruthy()
   })
+  test('test the ref from the component', () => {
+    const wrapper = mount(Message, {
+      props: {
+        duration: 1000,
+        message: 'example'
+      }
+    })
+    const dom = document.querySelector('.el-message')
+    expect(wrapper.vm.getCurrentRef).toEqual(dom)
+  })
 })

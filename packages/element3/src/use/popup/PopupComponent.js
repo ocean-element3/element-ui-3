@@ -1,4 +1,4 @@
-import { Teleport, ref, h, Transition, computed, toRefs } from 'vue'
+import { Teleport, ref, Transition } from 'vue'
 import { props } from './props'
 import { useZindex, useBodyScroll } from './use'
 
@@ -24,28 +24,26 @@ export default {
         emit('close')
       }
     }
-
+    const popupRef = ref()
     return {
       zIndex,
       show,
-      close
+      close,
+      popupRef
     }
   },
   render({ $props, $attrs, $slots, zIndex, close }) {
-    const attrs = computed(() => {
-      return {
-        ...$attrs
-      }
-    })
     return (
-      <Teleport to={$props.target}>
+      <Teleport to={this.target}>
         <Transition
-          ref="target"
           name={$props.transitionClass}
           onAfterLeave={$props.afterLeaveHandler}
           appear
         >
           <popupWrapper
+            ref={(v) => {
+              this.popupRef = v
+            }}
             onClick={close}
             style={{ zIndex }}
             {...$attrs}
