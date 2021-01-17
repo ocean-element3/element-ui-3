@@ -9,7 +9,7 @@
       center ? 'is-center' : '',
       customClass
     ]"
-    ref="self"
+    ref="popupRef"
     @mouseenter="handleMouseenter"
     @mouseleave="handleMouseleave"
     :afterLeaveHandler="handleAfterLeave"
@@ -111,7 +111,11 @@ export default {
     }
 
     delayClose()
+    const getCurrentRef = computed(() => {
+      return instance.refs.popupRef.popupRef.$el
+    })
     return {
+      getCurrentRef,
       close,
       isShow,
       isShowType,
