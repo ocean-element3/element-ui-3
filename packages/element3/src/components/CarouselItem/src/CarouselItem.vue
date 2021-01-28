@@ -5,7 +5,10 @@
 <script>
 import { defineComponent, reactive, toRefs } from 'vue'
 
+import { props } from './props'
+
 export default defineComponent({
+  props,
   setup() {
     const state = reactive({
       ready: false

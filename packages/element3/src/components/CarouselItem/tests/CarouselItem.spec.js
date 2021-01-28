@@ -16,4 +16,18 @@ describe('Carousel.vue', () => {
     await nextTick()
     expect(wrapper.find('.el-carousel__item').isVisible()).toBeTruthy()
   })
+
+  it('props name', async () => {
+    const name = 'name'
+    const label = 'label'
+    const wrapper = mount(CarouselItem, {
+      props: {
+        name,
+        label
+      }
+    })
+
+    expect(wrapper.vm.name).toEqual(name)
+    expect(wrapper.vm.label).toEqual(label)
+  })
 })
