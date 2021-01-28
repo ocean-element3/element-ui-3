@@ -15,7 +15,7 @@ import { ElLink } from './components/Link'
 // Form
 import { ElRadio } from './components/Radio'
 import { ElRadioButton } from './components/RadioButton'
-import ElRadioGroup from '../packages/radio-group'
+import { ElRadioGroup } from './components/RadioGroup'
 import ElCheckbox from '../packages/checkbox'
 import ElCheckboxButton from '../packages/checkbox-button'
 import ElCheckboxGroup from '../packages/checkbox-group'
@@ -41,7 +41,7 @@ import ElFormItem from '../packages/form-item'
 import ElTable from '../packages/table'
 import ElTableColumn from '../packages/table-column'
 import { ElTag } from './components/Tag'
-import ElProgress from '../packages/progress'
+import { ElProgress } from './components/Progress'
 import ElTree from '../packages/tree'
 import ElPagination from '../packages/pagination'
 import { ElBadge } from './components/Badge'
@@ -49,11 +49,11 @@ import { ElAvatar } from './components/Avatar'
 // Notice
 import ElAlert from '../packages/alert'
 
-import ElLoading, { useLoading } from '../packages/loading'
+import ElLoading from '../packages/loading'
 
 import { Message } from './components/Message'
 
-import ElMessageBox, { useMsgbox } from '../packages/message-box'
+import { Msgbox } from '../packages/message-box'
 
 import { Notification } from './components/Notification'
 // Navigation
@@ -76,9 +76,11 @@ import ElDialog from '../packages/dialog'
 import ElTooltip from '../packages/tooltip'
 import ElPopover from '../packages/popover'
 import ElPopconfirm from '../packages/popconfirm'
-import ElCard from '../packages/card'
-import ElCarousel from '../packages/carousel'
-import ElCarouselItem from '../packages/carousel-item'
+import { ElCard } from './components/Card'
+// import ElCarousel from '../packages/carousel'
+// import ElCarouselItem from '../packages/carousel-item'
+import ElCarousel from './components/Carousel'
+import ElCarouselItem from './components/CarouselItem'
 import ElCollapse from '../packages/collapse'
 import ElCollapseItem from '../packages/collapse-item'
 import ElTimeline from '../packages/timeline'
@@ -189,10 +191,10 @@ const install = (app, opts = {}) => {
 
 function applyOptions(app) {
   app.config.globalProperties.$loading = ElLoading.service
-  app.config.globalProperties.$msgbox = ElMessageBox.service
-  app.config.globalProperties.$alert = ElMessageBox.service.alert
-  app.config.globalProperties.$confirm = ElMessageBox.service.confirm
-  app.config.globalProperties.$prompt = ElMessageBox.service.prompt
+  app.config.globalProperties.$msgbox = Msgbox
+  app.config.globalProperties.$alert = Msgbox.alert
+  app.config.globalProperties.$confirm = Msgbox.confirm
+  app.config.globalProperties.$prompt = Msgbox.prompt
   app.config.globalProperties.$notify = Notification
   app.config.globalProperties.$message = Message
 }
@@ -284,8 +286,7 @@ export {
   ElScrollbar,
   ElAutocomplete,
   Message,
-  useLoading,
-  useMsgbox,
+  Msgbox,
   Notification,
   install,
   setupGlobalOptions
